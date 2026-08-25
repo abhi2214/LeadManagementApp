@@ -8,13 +8,12 @@ const initialState: AuthState = {
   token: null,
   isLoading: false,
   error: null,
-  isHydrated: false, // flips true once we've checked AsyncStorage on boot
+  isHydrated: false,
 };
 
-// Runs once on app start — checks if a session was persisted from a previous launch
 export const hydrateSession = createAsyncThunk('auth/hydrate', async () => {
   const session = await storage.loadSession();
-  return session; // null if nothing stored
+  return session;
 });
 
 export const login = createAsyncThunk(
@@ -52,7 +51,7 @@ const authSlice = createSlice({
         state.isHydrated = true;
       })
       .addCase(hydrateSession.rejected, state => {
-        state.isHydrated = true; // don't block the app forever even if this fails
+        state.isHydrated = true;
       })
       .addCase(login.pending, state => {
         state.isLoading = true;

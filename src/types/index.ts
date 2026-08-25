@@ -9,7 +9,7 @@ export type LeadStatus =
 export interface Note {
   id: string;
   text: string;
-  createdAt: string; // ISO date
+  createdAt: string;
 }
 
 export interface Lead {
@@ -20,18 +20,17 @@ export interface Lead {
   email: string;
   status: LeadStatus;
   notes: Note[];
-  createdAt: string; // ISO date
-  updatedAt: string; // ISO date
+  createdAt: string;
+  updatedAt: string;
 }
 
-// Payload used by both create and update forms
 export interface LeadFormValues {
   name: string;
   phone: string;
   email: string;
   company: string;
   status: LeadStatus;
-  notes?: string; // free-text note entered on the form, converted to a Note on submit
+  notes?: string;
 }
 
 export interface User {
@@ -45,13 +44,13 @@ export interface AuthState {
   token: string | null;
   isLoading: boolean;
   error: string | null;
-  isHydrated: boolean; // becomes true once AsyncStorage has been checked on app boot
+  isHydrated: boolean;
 }
 
 export interface LeadsState {
   items: Lead[];
-  isLoading: boolean; // initial load / refresh
-  isLoadingMore: boolean; // pagination
+  isLoading: boolean;
+  isLoadingMore: boolean;
   error: string | null;
   searchQuery: string;
   statusFilter: LeadStatus | 'All';
@@ -59,7 +58,7 @@ export interface LeadsState {
   hasMore: boolean;
 }
 
-// Root navigation param lists — keep these in sync with navigation/types.ts
+
 export type RootStackParamList = {
   Auth: undefined;
   Main: undefined;
@@ -72,5 +71,5 @@ export type AuthStackParamList = {
 export type MainStackParamList = {
   Dashboard: undefined;
   LeadDetails: { leadId: string };
-  AddEditLead: { leadId?: string }; // undefined leadId = "Add" mode
+  AddEditLead: { leadId?: string };
 };

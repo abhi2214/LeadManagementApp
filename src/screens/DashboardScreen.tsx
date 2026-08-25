@@ -24,10 +24,8 @@ export default function DashboardScreen({ navigation }: Props) {
 
   const debouncedSearch = useDebounce(searchQuery, 400);
 
-  // Re-fetch (reset to page 1) whenever the debounced search text or the status filter changes.
   useEffect(() => {
     dispatch(fetchLeads({ reset: true }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearch, statusFilter]);
 
   const handleRefresh = () => dispatch(fetchLeads({ reset: true }));
@@ -70,8 +68,6 @@ export default function DashboardScreen({ navigation }: Props) {
           style={{ marginBottom: 0 }}
         />
       </View>
-
-      {/* TODO: consider extracting this into a <StatusFilterBar /> component if it grows */}
       <View>
         <FlatList
           horizontal
@@ -108,7 +104,6 @@ export default function DashboardScreen({ navigation }: Props) {
           refreshing={isLoading}
           onEndReached={handleLoadMore}
           onEndReachedThreshold={0.4}
-          // Perf props — tune based on real device profiling
           initialNumToRender={10}
           windowSize={7}
           removeClippedSubviews

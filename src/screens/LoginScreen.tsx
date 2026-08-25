@@ -21,8 +21,6 @@ export default function LoginScreen() {
 
     dispatch(clearAuthError());
     dispatch(login({ email, password }));
-    // On success, authSlice sets `user` -> RootNavigator swaps to MainNavigator automatically.
-    // No manual navigation call needed here.
   };
 
   return (

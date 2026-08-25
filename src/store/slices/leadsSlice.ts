@@ -15,8 +15,6 @@ const initialState: LeadsState = {
   hasMore: true,
 };
 
-// `reset: true` = fresh search/filter/pull-to-refresh (replace list, page 1)
-// `reset: false` = "load more" (append, next page)
 export const fetchLeads = createAsyncThunk(
   'leads/fetch',
   async (

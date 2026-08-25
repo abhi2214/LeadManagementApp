@@ -7,10 +7,6 @@ import LeadDetailsScreen from '../screens/LeadDetailsScreen';
 import AddEditLeadScreen from '../screens/AddEditLeadScreen';
 
 const Stack = createNativeStackNavigator<MainStackParamList>();
-
-// Android hardware back button is handled automatically by
-// @react-navigation/native-stack as long as each screen is pushed onto
-// this stack (which it is here) — no extra BackHandler wiring needed.
 export default function MainNavigator() {
   return (
     <Stack.Navigator

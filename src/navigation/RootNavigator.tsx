@@ -15,8 +15,6 @@ export default function RootNavigator() {
   const dispatch = useAppDispatch();
   const { user, isHydrated } = useAppSelector(state => state.auth);
 
-  // On app boot, check AsyncStorage for a previously saved session.
-  // This is what satisfies "remain logged in after closing and reopening the app".
   useEffect(() => {
     dispatch(hydrateSession());
   }, [dispatch]);

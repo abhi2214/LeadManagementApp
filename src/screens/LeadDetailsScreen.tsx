@@ -18,10 +18,6 @@ export default function LeadDetailsScreen({ route, navigation }: Props) {
 
   const [noteText, setNoteText] = useState('');
   const [statusPickerOpen, setStatusPickerOpen] = useState(false);
-
-  // If the list hasn't been loaded yet (e.g. deep link), fall back to a fetch.
-  // TODO: replace with a dedicated `fetchLeadById` thunk if you want this screen
-  // to work fully standalone rather than relying on the dashboard list.
   useEffect(() => {
     if (!lead) dispatch(fetchLeads({ reset: true }));
   }, [lead, dispatch]);
@@ -70,8 +66,6 @@ export default function LeadDetailsScreen({ route, navigation }: Props) {
         <Text style={styles.sectionTitle}>Change Status</Text>
       </TouchableOpacity>
       {/*
-        TODO: this inline chip list works but a bottom-sheet/modal picker would look
-        more "CRM-native" — swap in your own if you have time left.
       */}
       {statusPickerOpen && (
         <View style={styles.statusOptions}>

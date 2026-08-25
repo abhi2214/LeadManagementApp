@@ -11,8 +11,6 @@ import StatusBadge from '../components/StatusBadge';
 
 type Props = NativeStackScreenProps<MainStackParamList, 'AddEditLead'>;
 
-// TODO: this screen is a solid candidate for swapping in React Hook Form if
-// you want to demo that in the "optional enhancements" section.
 export default function AddEditLeadScreen({ route, navigation }: Props) {
   const { leadId } = route.params;
   const isEditMode = !!leadId;
@@ -47,8 +45,6 @@ export default function AddEditLeadScreen({ route, navigation }: Props) {
       }
       navigation.goBack();
     } catch {
-      // TODO: surface a toast/snackbar here instead of swallowing the error —
-      // the thunk already puts a message in state.leads.error if you want to read it
     } finally {
       setSubmitting(false);
     }
